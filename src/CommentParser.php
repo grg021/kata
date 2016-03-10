@@ -2,29 +2,37 @@
 
 class CommentParser
 {
+    private $prime = [];
     public function parse($number)
     {
-    	$prime = [];
-        while ($number > 1) {
+        if ($number > 1) {
         	if ($number % 2 == 0) {
-    	    		$prime[] = 2;
+    	    		$this->prime[] = 2;
     	    		$number /= 2;
     	    	}
-            if ($number % 3 == 0) {
-                $prime[] = 3;
+            elseif ($number % 3 == 0) {
+                $this->prime[] = 3;
                 $number /= 3;
             }
-            if ($number % 5 == 0) {
-                $prime[] = 5;
+            elseif ($number % 5 == 0) {
+                $this->prime[] = 5;
                 $number /= 5;
             }
-            if ($number % 7 == 0) {
-                $prime[] = 7;
+            elseif ($number % 7 == 0) {
+                $this->prime[] = 7;
                 $number /= 7;
             }
+            else 
+            {
+                $this->prime[] = $number;
+                $number /= $number;
+            }
+            $this->parse($number);
+        } else {
+            // $this->prime[] = 1;
         }
-        sort($prime, SORT_NUMERIC);
-        var_dump($prime);
-        return $prime;
+        sort($this->prime, SORT_NUMERIC);
+        // var_dump($this->prime);
+        return $this->prime;
     }
 }

@@ -43,4 +43,12 @@ class CommentParserSpec extends ObjectBehavior
     function it_computes_prime_for_360() {
         $this->parse(360)->shouldReturn([2,2,2,3,3,5]);   
     }
+
+    function it_computes_prime_for_29() {
+        $this->parse(29)->shouldReturn([29]);   
+    }
+
+    function it_computes_prime_for_33() {
+        $this->parse(33)->shouldReturn([3,11]);   
+    }
 }
